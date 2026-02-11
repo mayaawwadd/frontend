@@ -4,32 +4,32 @@ import Link from 'next/link';
 
 export default function Page() {
   return (
-    <div
-      className="min-h-screen flex flex-col"
+    <div 
+      className="min-h-screen flex flex-col" 
       style={{ backgroundColor: '#1F1F1F' }}
     >
       {/* Header */}
-      <header
-        className="px-8 md:px-16 py-6"
+      <header 
+        className="px-8 md:px-16 py-6" 
         style={{ borderBottom: '1px solid #2A2A2A' }}
       >
         <div className="max-w-[1600px] mx-auto">
           <div className="flex items-center gap-3">
-            <div
+            <div 
               className="rounded-full"
               style={{
                 width: '12px',
                 height: '12px',
                 backgroundColor: '#FFE600',
-                animation: 'heartbeat 1.8s ease-in-out infinite',
+                animation: 'heartbeat 1.8s ease-in-out infinite'
               }}
             />
-            <h1
-              className="text-xl font-bold tracking-tight"
-              style={{
-                fontFamily: 'Inter, sans-serif',
+            <h1 
+              className="text-xl font-bold tracking-tight" 
+              style={{ 
+                fontFamily: 'Inter, sans-serif', 
                 color: '#FFFFFF',
-                letterSpacing: '-0.02em',
+                letterSpacing: '-0.02em'
               }}
             >
               AI <span style={{ color: '#FFE600' }}>Pulse</span>
