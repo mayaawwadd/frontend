@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo, useEffect } from 'react';
-import { mockNewsArticles, categories } from '../data/mockNews';
+import { mockNewsArticles, categories } from '@/lib/news';
 
 import NewsHeader from '@/components/news/NewsHeader';
 import NewsSkeleton from '@/components/news/NewsSkeleton';
