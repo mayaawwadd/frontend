@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import { useState, useMemo, useEffect } from 'react';
-import { mockNewsArticles, categories } from '@/lib/news';
+import { useState, useMemo, useEffect } from "react";
+import { mockNewsArticles, categories } from "@/lib/news";
 
-import NewsHeader from '@/components/news/NewsHeader';
-import NewsSkeleton from '@/components/news/NewsSkeleton';
-import NewsGrid from '@/components/news/NewsGrid';
-import NewsEmpty from '@/components/news/NewsEmpty';
+import NewsHeader from "@/components/news/NewsHeader";
+import NewsSkeleton from "@/components/news/NewsSkeleton";
+import NewsGrid from "@/components/news/NewsGrid";
+import NewsEmpty from "@/components/news/NewsEmpty";
 
 export default function NewsPage() {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedFilters, setSelectedFilters] = useState<string[]>(['All']);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedFilters, setSelectedFilters] = useState<string[]>(["All"]);
   const [isLoading, setIsLoading] = useState(true);
   const [isHeaderCollapsed, setIsHeaderCollapsed] = useState(false);
 
@@ -22,23 +22,23 @@ export default function NewsPage() {
 
   // filter toggle logic
   const toggleFilter = (category: string) => {
-    if (category === 'All') {
-      setSelectedFilters(['All']);
+    if (category === "All") {
+      setSelectedFilters(["All"]);
       return;
     }
 
     const next = selectedFilters.includes(category)
       ? selectedFilters.filter((c) => c !== category)
-      : [...selectedFilters.filter((c) => c !== 'All'), category];
+      : [...selectedFilters.filter((c) => c !== "All"), category];
 
-    setSelectedFilters(next.length === 0 ? ['All'] : next);
+    setSelectedFilters(next.length === 0 ? ["All"] : next);
   };
 
   // filtering logic
   const filteredArticles = useMemo(() => {
     let results = mockNewsArticles;
 
-    if (!selectedFilters.includes('All')) {
+    if (!selectedFilters.includes("All")) {
       results = results.filter((a) => selectedFilters.includes(a.category));
     }
 
@@ -48,7 +48,7 @@ export default function NewsPage() {
         (a) =>
           a.headline.toLowerCase().includes(q) ||
           a.summary.toLowerCase().includes(q) ||
-          a.source.toLowerCase().includes(q)
+          a.source.toLowerCase().includes(q),
       );
     }
 
@@ -56,7 +56,7 @@ export default function NewsPage() {
   }, [selectedFilters, searchQuery]);
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#1F1F1F' }}>
+    <div className="min-h-screen" style={{ backgroundColor: "#1F1F1F" }}>
       <NewsHeader
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
@@ -70,8 +70,8 @@ export default function NewsPage() {
       {/* spacer for fixed header */}
       <div
         style={{
-          height: isHeaderCollapsed ? '80px' : '400px',
-          transition: 'height 0.7s ease-in-out',
+          height: isHeaderCollapsed ? "140px" : "480px",
+          transition: "height 0.7s ease-in-out",
         }}
       />
 
