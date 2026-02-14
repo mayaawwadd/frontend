@@ -1,17 +1,10 @@
 "use client";
 
 import NewsCard from "./NewsCard";
+import { NewsArticle } from "@/lib/news";
 
 interface NewsGridProps {
-  articles: {
-    id: string;
-    category: string;
-    headline: string;
-    summary: string;
-    source: string;
-    publishDate: string;
-    imageUrl: string;
-  }[];
+  articles: NewsArticle[];
 }
 
 export default function NewsGrid({ articles }: NewsGridProps) {

@@ -12,7 +12,7 @@ export default function Footer() {
             color: "#666666",
           }}
         >
-          © 2026 AI Pulse. Enterprise Intelligence Platform.
+         
         </p>
       </div>
     </footer>

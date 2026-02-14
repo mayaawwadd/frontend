@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { Badge, Text } from "@/components/atoms";
+import { ArticleMeta } from "@/components/molecules";
 
 interface NewsCardProps {
   article: {
@@ -73,21 +75,7 @@ export default function NewsCard({ article }: NewsCardProps) {
           >
             {/* Category Tag */}
             <div className="mb-3 flex gap-2 flex-wrap">
-              <span
-                className="inline-block px-3 py-1.5 rounded-full"
-                style={{
-                  fontFamily: "Inter, sans-serif",
-                  fontSize: "11px",
-                  fontWeight: "600",
-                  letterSpacing: "0.02em",
-                  textTransform: "uppercase",
-                  backgroundColor: "rgba(255,230,0,0.15)",
-                  color: "#FFE600",
-                  border: "1px solid rgba(255,230,0,0.3)",
-                }}
-              >
-                {article.category}
-              </span>
+              <Badge size="sm">{article.category}</Badge>
             </div>
 
             {/* Headline */}
@@ -127,35 +115,7 @@ export default function NewsCard({ article }: NewsCardProps) {
             </p>
 
             {/* Footer */}
-            <div className="flex items-center justify-between flex-wrap gap-2">
-              <span
-                className="font-medium"
-                style={{
-                  fontFamily: "Inter, sans-serif",
-                  color: "#B0B0B0",
-                  fontSize: "12px",
-                  letterSpacing: "0.01em",
-                  textShadow: "0 1px 3px rgba(0,0,0,0.4)",
-                }}
-              >
-                {article.source}
-              </span>
-
-              <span
-                style={{
-                  fontFamily: "Inter, sans-serif",
-                  color: "#999999",
-                  fontSize: "12px",
-                  textShadow: "0 1px 3px rgba(0,0,0,0.4)",
-                }}
-              >
-                {new Date(article.publishDate).toLocaleDateString("en-US", {
-                  month: "short",
-                  day: "numeric",
-                  year: "numeric",
-                })}
-              </span>
-            </div>
+            <ArticleMeta source={article.source} publishDate={article.publishDate} />
           </div>
         </div>
       </article>

@@ -3,10 +3,8 @@
 import { useState, useMemo, useEffect } from "react";
 import { mockNewsArticles, categories } from "@/lib/news";
 
-import NewsHeader from "@/components/news/NewsHeader";
-import NewsSkeleton from "@/components/news/NewsSkeleton";
-import NewsGrid from "@/components/news/NewsGrid";
-import NewsEmpty from "@/components/news/NewsEmpty";
+import { NewsTemplate } from "@/components/templates";
+import { NewsGrid, NewsSkeleton, NewsEmpty } from "@/components/organisms";
 
 export default function NewsPage() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -56,36 +54,22 @@ export default function NewsPage() {
   }, [selectedFilters, searchQuery]);
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#1F1F1F" }}>
-      <NewsHeader
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-        selectedFilters={selectedFilters}
-        toggleFilter={toggleFilter}
-        categories={categories}
-        isHeaderCollapsed={isHeaderCollapsed}
-        setIsHeaderCollapsed={setIsHeaderCollapsed}
-      />
-
-      {/* spacer for fixed header */}
-      <div
-        style={{
-          height: isHeaderCollapsed ? "140px" : "480px",
-          transition: "height 0.7s ease-in-out",
-        }}
-      />
-
-      <main className="px-16 py-16">
-        <div className="max-w-[1600px] mx-auto">
-          {isLoading ? (
-            <NewsSkeleton />
-          ) : filteredArticles.length > 0 ? (
-            <NewsGrid articles={filteredArticles} />
-          ) : (
-            <NewsEmpty />
-          )}
-        </div>
-      </main>
-    </div>
+    <NewsTemplate
+      searchQuery={searchQuery}
+      setSearchQuery={setSearchQuery}
+      selectedFilters={selectedFilters}
+      toggleFilter={toggleFilter}
+      categories={categories}
+      isHeaderCollapsed={isHeaderCollapsed}
+      setIsHeaderCollapsed={setIsHeaderCollapsed}
+    >
+      {isLoading ? (
+        <NewsSkeleton />
+      ) : filteredArticles.length > 0 ? (
+        <NewsGrid articles={filteredArticles} />
+      ) : (
+        <NewsEmpty />
+      )}
+    </NewsTemplate>
   );
 }

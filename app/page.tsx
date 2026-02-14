@@ -1,6 +1,4 @@
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import Footer from "@/components/Footer";
+import { HomeTemplate } from "@/components/templates";
 
 export const metadata = {
   title: "AI Pulse",
@@ -8,14 +6,5 @@ export const metadata = {
 };
 
 export default function HomePage() {
-  return (
-    <div
-      className="min-h-screen flex flex-col"
-      style={{ backgroundColor: "#1F1F1F" }}
-    >
-      <Header />
-      <Hero />
-      <Footer />
-    </div>
-  );
+  return <HomeTemplate />;
 }

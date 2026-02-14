@@ -1,17 +1,13 @@
 "use client";
 
+import { Text } from "@/components/atoms";
+
 export default function NewsEmpty() {
   return (
     <div className="text-center py-32">
-      <p
-        className="text-xl font-light"
-        style={{
-          fontFamily: "Inter, sans-serif",
-          color: "#666666",
-        }}
-      >
+      <Text variant="subheading" color="tertiary">
         No articles found matching your criteria
-      </p>
+      </Text>
     </div>
   );
 }
