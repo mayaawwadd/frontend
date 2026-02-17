@@ -1,9 +1,9 @@
 "use client";
-
-import Link from "next/link";
-import { Badge, Text } from "@/components/atoms";
+ 
+import { useState } from "react";
+import { Badge, Modal } from "@/components/atoms";
 import { ArticleMeta } from "@/components/molecules";
-
+ 
 interface NewsCardProps {
   article: {
     id: string;
@@ -16,11 +16,32 @@ interface NewsCardProps {
     url: string;
   };
 }
-
+ 
 export default function NewsCard({ article }: NewsCardProps) {
+  const [showModal, setShowModal] = useState(false);
+ 
+  // Extract domain from URL for display
+  const getDomain = (url: string) => {
+    try {
+      return new URL(url).hostname.replace("www.", "");
+    } catch {
+      return "external site";
+    }
+  };
+ 
+  const handleCardClick = () => {
+    setShowModal(true);
+  };
+ 
+  const handleConfirm = () => {
+    setShowModal(false);
+    window.open(article.url, "_blank", "noopener,noreferrer");
+  };
+ 
   return (
-    <Link href={article.url} target="_blank" rel="noopener noreferrer">
+    <>
       <article
+        onClick={handleCardClick}
         className="relative overflow-hidden transition-all duration-300 hover:translate-y-[-2px] cursor-pointer hover:brightness-110"
         style={{
           backgroundColor: "#2A2A2A",
@@ -39,7 +60,7 @@ export default function NewsCard({ article }: NewsCardProps) {
             backgroundPosition: "center",
           }}
         />
-
+ 
         {/* Gradient Overlay */}
         <div
           className="absolute inset-0"
@@ -48,7 +69,7 @@ export default function NewsCard({ article }: NewsCardProps) {
               "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.7) 75%, rgba(0,0,0,0.85) 100%)",
           }}
         />
-
+ 
         {/* Content Area */}
         <div
           className="absolute bottom-0 left-0 right-0"
@@ -67,7 +88,7 @@ export default function NewsCard({ article }: NewsCardProps) {
               backgroundColor: "rgba(0,0,0,0.15)",
             }}
           />
-
+ 
           {/* Text Area */}
           <div
             className="relative p-8 flex flex-col justify-end"
@@ -77,7 +98,7 @@ export default function NewsCard({ article }: NewsCardProps) {
             <div className="mb-3 flex gap-2 flex-wrap">
               <Badge size="sm">{article.category}</Badge>
             </div>
-
+ 
             {/* Headline */}
             <h3
               className="mb-3"
@@ -94,7 +115,7 @@ export default function NewsCard({ article }: NewsCardProps) {
             >
               {article.headline}
             </h3>
-
+ 
             {/* Summary */}
             <p
               className="mb-4"
@@ -113,12 +134,22 @@ export default function NewsCard({ article }: NewsCardProps) {
             >
               {article.summary}
             </p>
-
+ 
             {/* Footer */}
             <ArticleMeta source={article.source} publishDate={article.publishDate} />
           </div>
         </div>
       </article>
-    </Link>
+ 
+      <Modal
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+        onConfirm={handleConfirm}
+        title="Leaving AI Pulse"
+        message={`You're about to visit ${getDomain(article.url)}. This will open in a new tab.`}
+        confirmText="Open Article"
+        cancelText="Stay Here"
+      />
+    </>
   );
 }
