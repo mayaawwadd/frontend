@@ -27,6 +27,15 @@ export default function Logo({ size = "md" }: LogoProps) {
 
   return (
     <div className="flex items-center" style={{ gap: styles.gap }}>
+      <img
+        src="/ernst-young-ey-logo.png"
+        alt="EY Logo"
+        style={{
+          width: "55px",
+          height: "55px",
+          objectFit: "contain",
+        }}
+      />
       <div
         className="rounded-full animate-heartbeat"
         style={{

@@ -56,6 +56,16 @@ export default function NewsHeader({
             <div
               className="flex items-center gap-4 hover:opacity-70 transition-all duration-700 ease-in-out cursor-pointer"
             >
+              <img
+                src="/ernst-young-ey-logo.png"
+                alt="EY Logo"
+                className="transition-all duration-700 ease-in-out"
+                style={{
+                  width: isHeaderCollapsed ? "40px" : "55px",
+                  height: isHeaderCollapsed ? "40px" : "55px",
+                  objectFit: "contain",
+                }}
+              />
               <div
                 className="rounded-full animate-heartbeat transition-all duration-700 ease-in-out"
                 style={{
