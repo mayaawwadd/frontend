@@ -311,7 +311,7 @@ export default function LandingPage() {
                 onClick={() => router.push("/feed")}
                 className="px-6 py-3.5 border border-border text-foreground-muted hover:text-foreground rounded-lg font-medium transition-all text-sm"
               >
-                Preview as guest →
+                Preview the feed →
               </button>
             </div>
           </div>

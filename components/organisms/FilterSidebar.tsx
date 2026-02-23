@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { TOPICS, SOURCES, REGIONS } from "@/data/mockArticles";
+import ToggleChip from "@/components/atoms/ToggleChip";
 
 interface FilterSidebarProps {
     selectedTopics: string[];
@@ -13,6 +14,7 @@ interface FilterSidebarProps {
     onRegionChange: (regions: string[]) => void;
     onCuratedChange: (v: boolean) => void;
     onReset: () => void;
+    fullWidth?: boolean;
 }
 
 export default function FilterSidebar({
@@ -25,6 +27,7 @@ export default function FilterSidebar({
     onRegionChange,
     onCuratedChange,
     onReset,
+    fullWidth = false,
 }: FilterSidebarProps) {
     const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -36,19 +39,21 @@ export default function FilterSidebar({
         selectedTopics.length > 0 || selectedSources.length > 0 || selectedRegions.length > 0 || onlyCurated;
 
     return (
-        <aside className="w-56 shrink-0">
-            {/* Mobile toggle */}
-            <button
-                onClick={() => setMobileOpen((v) => !v)}
-                className="lg:hidden mb-3 flex items-center gap-2 text-sm text-foreground-muted hover:text-foreground transition-colors"
-            >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4h18M6 8h12M9 12h6M12 16h0" />
-                </svg>
-                {mobileOpen ? "Hide Filters" : "Show Filters"}
-            </button>
+        <aside className={fullWidth ? "w-full" : "w-56 shrink-0"}>
+            {/* Mobile toggle (hide this when used as fullWidth overlay, because FeedPage already controls it) */}
+            {!fullWidth && (
+                <button
+                    onClick={() => setMobileOpen((v) => !v)}
+                    className="lg:hidden mb-3 flex items-center gap-2 text-sm text-foreground-muted hover:text-foreground transition-colors"
+                >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4h18M6 8h12M9 12h6M12 16h0" />
+                    </svg>
+                    {mobileOpen ? "Hide Filters" : "Show Filters"}
+                </button>
+            )}
 
-            <div className={`${mobileOpen ? "block" : "hidden"} lg:block space-y-6`}>
+            <div className={`${fullWidth ? "block" : mobileOpen ? "block" : "hidden"} lg:block space-y-6`}>
                 {/* Header */}
                 <div className="flex items-center justify-between">
                     <span className="text-xs font-semibold uppercase tracking-widest text-foreground-subtle">Filters</span>
@@ -59,21 +64,12 @@ export default function FilterSidebar({
                     )}
                 </div>
 
-                {/* Curated only toggle */}
-                <div className="flex items-center justify-between py-1">
-                    <span className="text-sm text-foreground-muted">Curated only</span>
-                    <button
-                        onClick={() => onCuratedChange(!onlyCurated)}
-                        aria-label="Toggle curated only"
-                        className={`w-10 h-5 rounded-full transition-colors duration-200 relative ${onlyCurated ? "bg-accent" : "bg-border"
-                            }`}
-                    >
-                        <span
-                            className={`absolute top-0.5 w-4 h-4 rounded-full bg-background transition-transform duration-200 ${onlyCurated ? "translate-x-5" : "translate-x-0.5"
-                                }`}
-                        />
-                    </button>
-                </div>
+                {/* Curated only toggle (now uses ToggleChip) */}
+                <ToggleChip
+                    label="Curated only"
+                    selected={onlyCurated}
+                    onClick={() => onCuratedChange(!onlyCurated)}
+                />
 
                 <FilterGroup
                     title="Topics"
