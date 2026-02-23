@@ -149,6 +149,14 @@ h3 {
   color: hsl(var(--foreground-subtle));
 }
 
+.text-accent-foreground {
+  color: hsl(var(--accent-foreground));
+}
+
+.text-foreground {
+  color: hsl(var(--foreground));
+}
+
 .bg-background-elevated {
   background-color: hsl(var(--background-elevated));
 }
