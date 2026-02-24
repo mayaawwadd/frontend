@@ -128,8 +128,8 @@ function FilterGroup({
                                 key={item}
                                 onClick={() => onToggle(item)}
                                 className={`flex items-center gap-2.5 w-full text-left px-2 py-1.5 rounded-md text-sm transition-colors ${isSelected
-                                        ? "text-accent bg-accent/10"
-                                        : "text-foreground-muted hover:text-foreground hover:bg-background-surface"
+                                    ? "text-accent bg-accent/10"
+                                    : "text-foreground-muted hover:text-foreground hover:bg-background-surface"
                                     }`}
                             >
                                 <span

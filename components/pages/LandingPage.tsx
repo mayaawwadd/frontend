@@ -192,12 +192,6 @@ export default function LandingPage() {
               >
                 Sign in with Company SSO
               </button>
-              <button
-                onClick={() => router.push("/feed")}
-                className="px-6 py-3.5 border border-border text-foreground-muted hover:text-foreground hover:border-accent/40 rounded-lg font-medium transition-all text-sm"
-              >
-                Preview the feed →
-              </button>
             </div>
           </div>
         </div>
@@ -306,12 +300,6 @@ export default function LandingPage() {
                 className="px-8 py-3.5 bg-accent text-accent-foreground font-semibold rounded-lg hover:brightness-110 hover:shadow-accent-glow transition-all"
               >
                 Sign in with Company SSO
-              </button>
-              <button
-                onClick={() => router.push("/feed")}
-                className="px-6 py-3.5 border border-border text-foreground-muted hover:text-foreground rounded-lg font-medium transition-all text-sm"
-              >
-                Preview the feed →
               </button>
             </div>
           </div>
