@@ -62,15 +62,6 @@ export default function ArticleCard({ article, onOpen }: ArticleCardProps) {
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 card-overlay" />
 
-                {/* Curated badge */}
-                {article.curated && (
-                    <div className="absolute top-3 right-3 flex items-center gap-1 px-2 py-1 bg-accent rounded-full">
-                        <span className="w-1.5 h-1.5 rounded-full bg-accent-foreground" />
-                        <span className="text-[10px] font-bold text-accent-foreground uppercase tracking-wider">
-                            Curated
-                        </span>
-                    </div>
-                )}
 
                 {/* Category tag */}
                 <div className="absolute top-3 left-3">

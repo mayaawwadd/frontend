@@ -38,7 +38,6 @@ export default function FeedPage() {
     const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
     const [selectedSources, setSelectedSources] = useState<string[]>([]);
     const [selectedRegions, setSelectedRegions] = useState<string[]>([]);
-    const [onlyCurated, setOnlyCurated] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [confirmArticle, setConfirmArticle] = useState<Article | null>(null);
 
@@ -70,22 +69,19 @@ export default function FeedPage() {
             if (selectedTopics.length > 0 && !selectedTopics.includes(a.category)) return false;
             if (selectedSources.length > 0 && !selectedSources.includes(a.source)) return false;
             if (selectedRegions.length > 0 && !selectedRegions.includes(a.region)) return false;
-            if (onlyCurated && !a.curated) return false;
             return true;
         });
-    }, [searchQuery, selectedTopics, selectedSources, selectedRegions, onlyCurated]);
+    }, [searchQuery, selectedTopics, selectedSources, selectedRegions]);
 
     const handleReset = () => {
         setSelectedTopics([]);
         setSelectedSources([]);
         setSelectedRegions([]);
-        setOnlyCurated(false);
         setSearchQuery("");
     };
 
     const trendingTopics = TOPICS.slice(0, 6);
-    const activeFilterCount =
-        selectedTopics.length + selectedSources.length + selectedRegions.length + (onlyCurated ? 1 : 0);
+    const activeFilterCount = selectedTopics.length + selectedSources.length + selectedRegions.length;
 
     if (!userReady) return null;
     if (!user) return null;
@@ -112,18 +108,16 @@ export default function FeedPage() {
                     )}
 
                     <div className="flex gap-8">
-                        {/* ✅ LEFT sidebar — Desktop filters */}
+                        {/* LEFT sidebar — Desktop filters */}
                         <div className="hidden lg:flex flex-col shrink-0">
                             {sidebarOpen && (
                                 <FilterSidebar
                                     selectedTopics={selectedTopics}
                                     selectedSources={selectedSources}
                                     selectedRegions={selectedRegions}
-                                    onlyCurated={onlyCurated}
                                     onTopicChange={setSelectedTopics}
                                     onSourceChange={setSelectedSources}
                                     onRegionChange={setSelectedRegions}
-                                    onCuratedChange={setOnlyCurated}
                                     onReset={handleReset}
                                 />
                             )}
@@ -167,27 +161,27 @@ export default function FeedPage() {
                                 </button>
                             </div>
 
+                            {/* Mobile full-width filters drawer */}
                             {mobileFiltersOpen && (
                                 <div className="lg:hidden">
-                                    {/* overlay */}
                                     <div
                                         className="fixed inset-0 z-40"
-                                        style={{ background: "hsl(var(--background-overlay) / 0.6)", backdropFilter: "blur(4px)" }}
+                                        style={{
+                                            background: "hsl(var(--background-overlay) / 0.6)",
+                                            backdropFilter: "blur(4px)",
+                                        }}
                                         onClick={() => setMobileFiltersOpen(false)}
                                     />
 
-                                    {/* ✅ full-width drawer */}
                                     <div className="fixed top-0 left-0 right-0 bottom-0 z-50 bg-background-elevated border-r border-border shadow-toast animate-slide-up">
                                         <div className="p-4">
                                             <FilterSidebar
                                                 selectedTopics={selectedTopics}
                                                 selectedSources={selectedSources}
                                                 selectedRegions={selectedRegions}
-                                                onlyCurated={onlyCurated}
                                                 onTopicChange={setSelectedTopics}
                                                 onSourceChange={setSelectedSources}
                                                 onRegionChange={setSelectedRegions}
-                                                onCuratedChange={setOnlyCurated}
                                                 onReset={handleReset}
                                                 fullWidth
                                             />
@@ -230,7 +224,7 @@ export default function FeedPage() {
                             )}
                         </main>
 
-                        {/* Trending (unchanged) */}
+                        {/* Trending */}
                         <aside className="hidden xl:block w-52 shrink-0">
                             <div>
                                 <div className="flex items-center gap-2 mb-4">
