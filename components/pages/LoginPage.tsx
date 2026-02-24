@@ -16,7 +16,7 @@ export default function LoginPage() {
         setTimeout(() => {
             const user = loginAsSSO();
             setLoading(false);
-            router.push(user.preferencesSet ? "/feed" : "/preferences");
+            router.push("/feed");
         }, 1200);
     };
 

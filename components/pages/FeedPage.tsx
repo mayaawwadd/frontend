@@ -238,7 +238,7 @@ export default function FeedPage() {
                                         <button
                                             key={topic}
                                             onClick={() => setSelectedTopics([topic])}
-                                            className="flex items-center gap-3 w-full text-left px-3 py-2.5 rounded-lg bg-background-elevated hover:bg-background-surface border border-border hover:border-accent/30 transition-all group"
+                                            className="flex items-center gap-3 w-full text-left px-3 py-2.5 rounded-lg bg-background-elevated hover:bg-background-surface border [border-color:hsl(var(--border))] transition-colors group hover-border-accent"
                                         >
                                             <span className="text-xs text-foreground-subtle w-4 shrink-0">
                                                 {String(i + 1).padStart(2, "0")}
