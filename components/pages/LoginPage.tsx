@@ -88,7 +88,7 @@ export default function LoginPage() {
                             ) : (
                                 <>
                                     <SSOIcon />
-                                    Sign in with Company SSO
+                                    Sign in with your EY Account
                                 </>
                             )}
                         </button>
