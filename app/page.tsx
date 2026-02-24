@@ -1,10 +1,5 @@
-import { HomeTemplate } from "@/components/templates";
+import LandingPage from "@/components/pages/LandingPage";
 
-export const metadata = {
-  title: "AI Pulse",
-  description: "Enterprise Intelligence Platform",
-};
-
-export default function HomePage() {
-  return <HomeTemplate />;
+export default function Page() {
+  return <LandingPage />;
 }
