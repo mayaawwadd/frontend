@@ -4,13 +4,13 @@ import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { SlidersHorizontal } from "lucide-react";
 
-import { getUser, getPreferences } from "@/lib/appState";
+import { getUser } from "@/lib/appState";
 import { mockArticles, Article, TOPICS } from "@/data/mockArticles";
 
 import Navbar from "@/components/organisms/Navbar";
 import FilterSidebar from "@/components/organisms/FilterSidebar";
 import ArticleCard, { ArticleCardSkeleton } from "@/components/organisms/ArticleCard";
-import ArticleConfirmDialog from "@/components/organisms/ArticleConfirmDialog";
+import ArticlePreviewModal from "@/components/organisms/ArticlePreviewModal";
 import FeedEmptyState from "@/components/molecules/FeedEmptyState";
 import FeedTemplate from "@/components/templates/FeedTemplate";
 
@@ -19,13 +19,10 @@ export default function FeedPage() {
 
     const [userReady, setUserReady] = useState(false);
     const [user, setUser] = useState<ReturnType<typeof getUser>>(null);
-    const [prefs, setPrefs] = useState<ReturnType<typeof getPreferences>>(null);
 
     useEffect(() => {
         const u = getUser();
-        const p = getPreferences();
         setUser(u);
-        setPrefs(p);
         setUserReady(true);
     }, []);
 
@@ -38,21 +35,16 @@ export default function FeedPage() {
     const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
     const [selectedSources, setSelectedSources] = useState<string[]>([]);
     const [selectedRegions, setSelectedRegions] = useState<string[]>([]);
-    const [onlyCurated, setOnlyCurated] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [confirmArticle, setConfirmArticle] = useState<Article | null>(null);
 
-    const [sidebarOpen, setSidebarOpen] = useState(true);
+    const [sidebarOpen, setSidebarOpen] = useState(false);
     const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
     useEffect(() => {
         const t = setTimeout(() => setIsLoading(false), 1000);
         return () => clearTimeout(t);
     }, []);
-
-    const hasPreferences = useMemo(() => {
-        return !!(prefs && (prefs.topics?.length > 0 || prefs.regions?.length > 0));
-    }, [prefs]);
 
     const filteredArticles = useMemo(() => {
         return mockArticles.filter((a) => {
@@ -70,22 +62,20 @@ export default function FeedPage() {
             if (selectedTopics.length > 0 && !selectedTopics.includes(a.category)) return false;
             if (selectedSources.length > 0 && !selectedSources.includes(a.source)) return false;
             if (selectedRegions.length > 0 && !selectedRegions.includes(a.region)) return false;
-            if (onlyCurated && !a.curated) return false;
             return true;
         });
-    }, [searchQuery, selectedTopics, selectedSources, selectedRegions, onlyCurated]);
+    }, [searchQuery, selectedTopics, selectedSources, selectedRegions]);
 
     const handleReset = () => {
         setSelectedTopics([]);
         setSelectedSources([]);
         setSelectedRegions([]);
-        setOnlyCurated(false);
         setSearchQuery("");
     };
 
     const trendingTopics = TOPICS.slice(0, 6);
     const activeFilterCount =
-        selectedTopics.length + selectedSources.length + selectedRegions.length + (onlyCurated ? 1 : 0);
+        selectedTopics.length + selectedSources.length + selectedRegions.length;
 
     if (!userReady) return null;
     if (!user) return null;
@@ -96,21 +86,6 @@ export default function FeedPage() {
                 <Navbar searchQuery={searchQuery} onSearch={setSearchQuery} />
 
                 <div className="max-w-screen-xl mx-auto px-6 py-8">
-                    {!hasPreferences && !user.isGuest && (
-                        <div className="mb-6 rounded-xl border border-accent/30 bg-accent/5 p-5 flex items-center justify-between animate-slide-up">
-                            <div>
-                                <p className="text-sm font-semibold text-foreground mb-0.5">Personalise your AI Pulse feed</p>
-                                <p className="text-xs text-foreground-muted">Choose your interests to surface the most relevant content.</p>
-                            </div>
-                            <button
-                                onClick={() => router.push("/preferences")}
-                                className="shrink-0 px-4 py-2 bg-accent text-accent-foreground text-sm font-semibold rounded-lg hover:brightness-110 transition-all"
-                            >
-                                Set preferences →
-                            </button>
-                        </div>
-                    )}
-
                     <div className="flex gap-8">
                         {/* ✅ LEFT sidebar — Desktop filters */}
                         <div className="hidden lg:flex flex-col shrink-0">
@@ -119,11 +94,9 @@ export default function FeedPage() {
                                     selectedTopics={selectedTopics}
                                     selectedSources={selectedSources}
                                     selectedRegions={selectedRegions}
-                                    onlyCurated={onlyCurated}
                                     onTopicChange={setSelectedTopics}
                                     onSourceChange={setSelectedSources}
                                     onRegionChange={setSelectedRegions}
-                                    onCuratedChange={setOnlyCurated}
                                     onReset={handleReset}
                                 />
                             )}
@@ -183,11 +156,9 @@ export default function FeedPage() {
                                                 selectedTopics={selectedTopics}
                                                 selectedSources={selectedSources}
                                                 selectedRegions={selectedRegions}
-                                                onlyCurated={onlyCurated}
                                                 onTopicChange={setSelectedTopics}
                                                 onSourceChange={setSelectedSources}
                                                 onRegionChange={setSelectedRegions}
-                                                onCuratedChange={setOnlyCurated}
                                                 onReset={handleReset}
                                                 fullWidth
                                             />
@@ -216,8 +187,6 @@ export default function FeedPage() {
                                         <FeedEmptyState
                                             hasFilters={activeFilterCount > 0 || !!searchQuery}
                                             onReset={handleReset}
-                                            onSetPrefs={() => router.push("/preferences")}
-                                            hasPreferences={!!hasPreferences}
                                         />
                                     ) : (
                                         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 animate-fade-in">
@@ -230,7 +199,7 @@ export default function FeedPage() {
                             )}
                         </main>
 
-                        {/* Trending (unchanged) */}
+                        {/* Trending sidebar */}
                         <aside className="hidden xl:block w-52 shrink-0">
                             <div>
                                 <div className="flex items-center gap-2 mb-4">
@@ -261,10 +230,10 @@ export default function FeedPage() {
                 </div>
 
                 {confirmArticle && (
-                    <ArticleConfirmDialog
+                    <ArticlePreviewModal
                         article={confirmArticle}
                         onClose={() => setConfirmArticle(null)}
-                        onOpen={() => {
+                        onViewSource={() => {
                             window.open(confirmArticle.articleUrl, "_blank", "noopener,noreferrer");
                             setConfirmArticle(null);
                         }}

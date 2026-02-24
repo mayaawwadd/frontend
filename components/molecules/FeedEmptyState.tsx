@@ -1,15 +1,11 @@
 interface FeedEmptyStateProps {
   hasFilters: boolean;
   onReset: () => void;
-  onSetPrefs: () => void;
-  hasPreferences: boolean;
 }
 
 export default function FeedEmptyState({
   hasFilters,
   onReset,
-  onSetPrefs,
-  hasPreferences,
 }: FeedEmptyStateProps) {
   return (
     <div className="flex flex-col items-center justify-center py-24 text-center animate-fade-in">
@@ -33,18 +29,10 @@ export default function FeedEmptyState({
         </>
       ) : (
         <>
-          <h3 className="font-display font-semibold text-foreground mb-1">Choose your interests</h3>
+          <h3 className="font-display font-semibold text-foreground mb-1">No articles found</h3>
           <p className="text-sm text-foreground-muted mb-5 max-w-xs">
-            Personalise AI Pulse to surface the most relevant intelligence for you.
+            Try adjusting your filters to find relevant intelligence.
           </p>
-          {!hasPreferences && (
-            <button
-              onClick={onSetPrefs}
-              className="px-5 py-2.5 bg-accent text-accent-foreground text-sm font-semibold rounded-lg hover:brightness-110 transition-all"
-            >
-              Set preferences →
-            </button>
-          )}
         </>
       )}
     </div>

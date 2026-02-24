@@ -37,8 +37,8 @@ export default function Navbar({ searchQuery, onSearch }: NavbarProps) {
             <div className="max-w-screen-xl mx-auto px-6 h-14 flex items-center gap-4">
                 {/* Logo */}
                 <button
-                    onClick={() => router.push("/feed")}
-                    className="flex items-center gap-2 shrink-0 mr-2"
+                    onClick={() => router.push("/")}
+                    className="flex items-center gap-2 shrink-0 mr-2 hover:opacity-80 transition-opacity"
                 >
                     <Image
                         src="/assets/ai-pulse-logo.png"

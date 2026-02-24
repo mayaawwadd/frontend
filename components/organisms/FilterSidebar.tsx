@@ -2,17 +2,14 @@
 
 import { useState } from "react";
 import { TOPICS, SOURCES, REGIONS } from "@/data/mockArticles";
-import ToggleChip from "@/components/atoms/ToggleChip";
 
 interface FilterSidebarProps {
     selectedTopics: string[];
     selectedSources: string[];
     selectedRegions: string[];
-    onlyCurated: boolean;
     onTopicChange: (topics: string[]) => void;
     onSourceChange: (sources: string[]) => void;
     onRegionChange: (regions: string[]) => void;
-    onCuratedChange: (v: boolean) => void;
     onReset: () => void;
     fullWidth?: boolean;
 }
@@ -21,11 +18,9 @@ export default function FilterSidebar({
     selectedTopics,
     selectedSources,
     selectedRegions,
-    onlyCurated,
     onTopicChange,
     onSourceChange,
     onRegionChange,
-    onCuratedChange,
     onReset,
     fullWidth = false,
 }: FilterSidebarProps) {
@@ -36,7 +31,7 @@ export default function FilterSidebar({
     };
 
     const hasFilters =
-        selectedTopics.length > 0 || selectedSources.length > 0 || selectedRegions.length > 0 || onlyCurated;
+        selectedTopics.length > 0 || selectedSources.length > 0 || selectedRegions.length > 0;
 
     return (
         <aside className={fullWidth ? "w-full" : "w-56 shrink-0"}>
@@ -63,13 +58,6 @@ export default function FilterSidebar({
                         </button>
                     )}
                 </div>
-
-                {/* Curated only toggle (now uses ToggleChip) */}
-                <ToggleChip
-                    label="Curated only"
-                    selected={onlyCurated}
-                    onClick={() => onCuratedChange(!onlyCurated)}
-                />
 
                 <FilterGroup
                     title="Topics"

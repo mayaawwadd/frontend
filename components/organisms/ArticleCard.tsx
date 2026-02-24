@@ -22,19 +22,7 @@ export default function ArticleCard({ article, onOpen }: ArticleCardProps) {
     };
 
     const getCategoryColor = (category: string) => {
-        const map: Record<string, string> = {
-            "AI Governance": "bg-blue-500/20 text-blue-300",
-            GenAI: "bg-purple-500/20 text-purple-300",
-            "AI Security": "bg-red-500/20 text-red-300",
-            "AI Strategy": "bg-green-500/20 text-green-300",
-            LLMs: "bg-indigo-500/20 text-indigo-300",
-            "AI in Audit": "bg-orange-500/20 text-orange-300",
-            "AI in Consulting": "bg-teal-500/20 text-teal-300",
-            "AI Regulation": "bg-yellow-500/20 text-yellow-200",
-            MLOps: "bg-cyan-500/20 text-cyan-300",
-            "Data & Analytics": "bg-emerald-500/20 text-emerald-300",
-        };
-        return map[category] ?? "bg-border text-foreground-muted";
+        return "bg-accent/20 text-accent";
     };
 
     return (
@@ -62,16 +50,6 @@ export default function ArticleCard({ article, onOpen }: ArticleCardProps) {
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 card-overlay" />
 
-                {/* Curated badge */}
-                {article.curated && (
-                    <div className="absolute top-3 right-3 flex items-center gap-1 px-2 py-1 bg-accent rounded-full">
-                        <span className="w-1.5 h-1.5 rounded-full bg-accent-foreground" />
-                        <span className="text-[10px] font-bold text-accent-foreground uppercase tracking-wider">
-                            Curated
-                        </span>
-                    </div>
-                )}
-
                 {/* Category tag */}
                 <div className="absolute top-3 left-3">
                     <span className={`text-[10px] font-semibold px-2 py-1 rounded-full ${getCategoryColor(article.category)}`}>
@@ -86,8 +64,6 @@ export default function ArticleCard({ article, onOpen }: ArticleCardProps) {
                     <span className="text-xs text-foreground-subtle">{article.date}</span>
                     <span className="w-1 h-1 rounded-full bg-border" />
                     <span className="text-xs text-foreground-subtle truncate">{article.source}</span>
-                    <span className="w-1 h-1 rounded-full bg-border" />
-                    <span className="text-xs text-foreground-subtle">{article.region}</span>
                 </div>
 
                 <h3 className="font-display text-sm font-semibold text-foreground leading-snug mb-2 line-clamp-2 group-hover:text-accent transition-colors duration-200">
@@ -104,7 +80,7 @@ export default function ArticleCard({ article, onOpen }: ArticleCardProps) {
                 </div>
             </div>
 
-            {/* Hover tooltip with URL */}
+            {/* Hover tooltip with source */}
             {showTooltip && (
                 <div
                     className="pointer-events-none absolute z-20 px-3 py-2 rounded-lg text-xs max-w-[220px] animate-fade-in"
@@ -120,11 +96,11 @@ export default function ArticleCard({ article, onOpen }: ArticleCardProps) {
                     <div className="flex items-center gap-1.5 mb-0.5">
                         <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
                         <span className="text-accent font-semibold text-[10px] uppercase tracking-wide">
-                            Article URL
+                            Source
                         </span>
                     </div>
                     <span className="text-foreground-muted break-all leading-relaxed">
-                        {article.articleUrl.replace(/^https?:\/\//, "")}
+                        {article.source}
                     </span>
                 </div>
             )}
