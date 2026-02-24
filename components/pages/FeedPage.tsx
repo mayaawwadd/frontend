@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { SlidersHorizontal } from "lucide-react";
 
-import { getUser, getPreferences } from "@/lib/appState";
+import { getUser } from "@/lib/appState";
 import { mockArticles, Article, TOPICS } from "@/data/mockArticles";
 
 import Navbar from "@/components/organisms/Navbar";
@@ -19,13 +19,10 @@ export default function FeedPage() {
 
     const [userReady, setUserReady] = useState(false);
     const [user, setUser] = useState<ReturnType<typeof getUser>>(null);
-    const [prefs, setPrefs] = useState<ReturnType<typeof getPreferences>>(null);
 
     useEffect(() => {
         const u = getUser();
-        const p = getPreferences();
         setUser(u);
-        setPrefs(p);
         setUserReady(true);
     }, []);
 
@@ -48,10 +45,6 @@ export default function FeedPage() {
         const t = setTimeout(() => setIsLoading(false), 1000);
         return () => clearTimeout(t);
     }, []);
-
-    const hasPreferences = useMemo(() => {
-        return !!(prefs && (prefs.topics?.length > 0 || prefs.regions?.length > 0));
-    }, [prefs]);
 
     const filteredArticles = useMemo(() => {
         return mockArticles.filter((a) => {
@@ -92,21 +85,6 @@ export default function FeedPage() {
                 <Navbar searchQuery={searchQuery} onSearch={setSearchQuery} />
 
                 <div className="max-w-screen-xl mx-auto px-6 py-8">
-                    {!hasPreferences && !user.isGuest && (
-                        <div className="mb-6 rounded-xl border border-accent/30 bg-accent/5 p-5 flex items-center justify-between animate-slide-up">
-                            <div>
-                                <p className="text-sm font-semibold text-foreground mb-0.5">Personalise your AI Pulse feed</p>
-                                <p className="text-xs text-foreground-muted">Choose your interests to surface the most relevant content.</p>
-                            </div>
-                            <button
-                                onClick={() => router.push("/preferences")}
-                                className="shrink-0 px-4 py-2 bg-accent text-accent-foreground text-sm font-semibold rounded-lg hover:brightness-110 transition-all"
-                            >
-                                Set preferences →
-                            </button>
-                        </div>
-                    )}
-
                     <div className="flex gap-8">
                         {/* LEFT sidebar — Desktop filters */}
                         <div className="hidden lg:flex flex-col shrink-0">
@@ -210,8 +188,6 @@ export default function FeedPage() {
                                         <FeedEmptyState
                                             hasFilters={activeFilterCount > 0 || !!searchQuery}
                                             onReset={handleReset}
-                                            onSetPrefs={() => router.push("/preferences")}
-                                            hasPreferences={!!hasPreferences}
                                         />
                                     ) : (
                                         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 animate-fade-in">
@@ -238,7 +214,7 @@ export default function FeedPage() {
                                         <button
                                             key={topic}
                                             onClick={() => setSelectedTopics([topic])}
-                                            className="flex items-center gap-3 w-full text-left px-3 py-2.5 rounded-lg bg-background-elevated hover:bg-background-surface border [border-color:hsl(var(--border))] transition-colors group hover-border-accent"
+                                            className="flex items-center gap-3 w-full text-left px-3 py-2.5 rounded-lg bg-background-elevated hover:bg-background-surface border border-border transition-all group hover-border-accent"
                                         >
                                             <span className="text-xs text-foreground-subtle w-4 shrink-0">
                                                 {String(i + 1).padStart(2, "0")}

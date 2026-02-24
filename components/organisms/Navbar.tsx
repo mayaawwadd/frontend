@@ -93,16 +93,6 @@ export default function Navbar({ searchQuery, onSearch }: NavbarProps) {
                             </div>
 
                             <button
-                                onClick={() => {
-                                    setMenuOpen(false);
-                                    router.push("/preferences");
-                                }}
-                                className="w-full px-4 py-2.5 text-left text-sm text-foreground-muted hover:text-foreground hover:bg-background-surface transition-colors"
-                            >
-                                ⚙ Preferences
-                            </button>
-
-                            <button
                                 onClick={handleLogout}
                                 className="w-full px-4 py-2.5 text-left text-sm text-foreground-muted hover:text-foreground hover:bg-background-surface transition-colors"
                             >

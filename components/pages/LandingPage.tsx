@@ -164,7 +164,7 @@ export default function LandingPage() {
                 onClick={() => router.push("/login")}
                 className="px-7 py-3.5 bg-accent text-accent-foreground font-semibold rounded-lg hover:brightness-110 hover:shadow-accent-glow transition-all text-sm"
               >
-                Sign in with your EY accountß
+                Sign in with your EY account
               </button>
             </div>
           </div>
@@ -273,7 +273,7 @@ export default function LandingPage() {
                 onClick={() => router.push("/login")}
                 className="px-8 py-3.5 bg-accent text-accent-foreground font-semibold rounded-lg hover:brightness-110 hover:shadow-accent-glow transition-all"
               >
-                Sign in with your EY accountß
+                Sign in with your EY account
               </button>
             </div>
           </div>
