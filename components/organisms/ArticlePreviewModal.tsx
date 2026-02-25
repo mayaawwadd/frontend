@@ -123,7 +123,7 @@ export default function ArticlePreviewModal({ article, onClose }: ArticlePreview
                 {/* Close button */}
                 <button
                     onClick={onClose}
-                    className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-background-overlay/60 backdrop-blur-sm border border-border flex items-center justify-center text-foreground-muted hover:text-foreground hover:bg-background-surface transition-all"
+                    className="absolute cursor-pointer top-4 right-4 z-10 w-8 h-8 rounded-full bg-background-overlay/60 backdrop-blur-sm border border-border flex items-center justify-center text-foreground-muted hover:text-foreground hover:bg-background-surface transition-all"
                     aria-label="Close"
                 >
                     <X size={16} />
@@ -145,12 +145,11 @@ export default function ArticlePreviewModal({ article, onClose }: ArticlePreview
                 {/* Content */}
                 <div className="p-5 space-y-4">
                     {/* Metadata */}
-                    <div className="flex items-center gap-2 text-xs text-foreground-subtle">
-                        <span>{article.date}</span>
-                        <span className="w-1 h-1 rounded-full bg-border" />
-                        <span>{article.source}</span>
-                        <span className="w-1 h-1 rounded-full bg-border" />
-                        <span>{article.region}</span>
+                    <div className="flex items-center justify-between mb-2">
+                        <span className="text-xs text-foreground-subtle">{article.date}</span>
+                        <span className="text-xs text-foreground-subtle truncate max-w-[50%] text-right">
+                            {article.source}
+                        </span>
                     </div>
 
                     {/* Title */}
@@ -172,7 +171,7 @@ export default function ArticlePreviewModal({ article, onClose }: ArticlePreview
                         {/* View Source */}
                         <button
                             onClick={handleViewSource}
-                            className="h-11 px-5 rounded-lg bg-accent text-accent-foreground font-semibold text-sm flex items-center justify-center gap-2 hover:brightness-110 transition-all flex-1"
+                            className="h-11 px-5 cursor-pointer rounded-lg bg-accent text-accent-foreground font-semibold text-sm flex items-center justify-center gap-2 hover:brightness-110 transition-all flex-1"
                         >
                             <ExternalLink size={16} />
                             <span className="hidden sm:inline">View Source</span>
@@ -183,7 +182,7 @@ export default function ArticlePreviewModal({ article, onClose }: ArticlePreview
                         <div className="relative" ref={shareWrapRef}>
                             <button
                                 onClick={() => setShareOpen(!shareOpen)}
-                                className="h-11 px-4 rounded-lg border border-border text-foreground-muted hover:text-foreground hover:bg-background-surface transition-all flex items-center justify-center gap-2 w-full sm:w-auto"
+                                className="h-11 cursor-pointer px-4 rounded-lg border border-border text-foreground-muted hover:text-foreground hover:bg-background-surface transition-all flex items-center justify-center gap-2 w-full sm:w-auto"
                                 aria-label="Share article"
                             >
                                 <Share2 size={16} />
@@ -195,7 +194,7 @@ export default function ArticlePreviewModal({ article, onClose }: ArticlePreview
                                     {/* Copy link */}
                                     <button
                                         onClick={handleCopyLink}
-                                        className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-background-surface transition-colors text-left"
+                                        className="w-full cursor-pointer flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-background-surface transition-colors text-left"
                                     >
                                         {showLinkCopied ? (
                                             <Check size={16} className="text-green-400 shrink-0" />
@@ -215,7 +214,7 @@ export default function ArticlePreviewModal({ article, onClose }: ArticlePreview
                                     {/* Teams */}
                                     <button
                                         onClick={handleShareTeams}
-                                        className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-background-surface transition-colors text-left"
+                                        className="w-full cursor-pointer flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-background-surface transition-colors text-left"
                                     >
                                         <svg viewBox="0 0 24 24" className="w-4 h-4 text-foreground-subtle shrink-0" fill="currentColor">
                                             <path d="M19.2 6.4h-2.4V4.8A2.4 2.4 0 0 0 14.4 2.4h-4.8A2.4 2.4 0 0 0 7.2 4.8v1.6H4.8A2.4 2.4 0 0 0 2.4 8.8v9.6a2.4 2.4 0 0 0 2.4 2.4h14.4a2.4 2.4 0 0 0 2.4-2.4V8.8a2.4 2.4 0 0 0-2.4-2.4zM9.6 4.8h4.8v1.6H9.6V4.8z" />
@@ -229,7 +228,7 @@ export default function ArticlePreviewModal({ article, onClose }: ArticlePreview
                                     {/* LinkedIn */}
                                     <button
                                         onClick={handleShareLinkedIn}
-                                        className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-background-surface transition-colors text-left"
+                                        className="w-full flex cursor-pointer items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-background-surface transition-colors text-left"
                                     >
                                         <svg viewBox="0 0 24 24" className="w-4 h-4 text-foreground-subtle shrink-0" fill="currentColor">
                                             <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C0 .774 23.2 0 22.222 0h.003z" />
@@ -243,7 +242,7 @@ export default function ArticlePreviewModal({ article, onClose }: ArticlePreview
                                     {/* Twitter/X */}
                                     <button
                                         onClick={handleShareTwitter}
-                                        className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-background-surface transition-colors text-left"
+                                        className="w-full cursor-pointer flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-background-surface transition-colors text-left"
                                     >
                                         <svg viewBox="0 0 24 24" className="w-4 h-4 text-foreground-subtle shrink-0" fill="currentColor">
                                             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
@@ -257,7 +256,7 @@ export default function ArticlePreviewModal({ article, onClose }: ArticlePreview
                                     {/* Email */}
                                     <button
                                         onClick={handleShareEmail}
-                                        className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-background-surface transition-colors text-left"
+                                        className="w-full cursor-pointer flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-background-surface transition-colors text-left"
                                     >
                                         <Mail size={16} className="text-foreground-subtle shrink-0" />
                                         <div>
@@ -272,7 +271,7 @@ export default function ArticlePreviewModal({ article, onClose }: ArticlePreview
                         {/* Copy link button */}
                         <button
                             onClick={handleCopyLink}
-                            className="h-11 w-11 rounded-lg border border-border text-foreground-muted hover:text-foreground hover:bg-background-surface transition-all flex items-center justify-center shrink-0"
+                            className="h-11 w-11 cursor-pointer rounded-lg border border-border text-foreground-muted hover:text-foreground hover:bg-background-surface transition-all flex items-center justify-center shrink-0"
                             aria-label="Copy link"
                         >
                             {showLinkCopied ? <Check size={16} className="text-green-400" /> : <Copy size={16} />}
