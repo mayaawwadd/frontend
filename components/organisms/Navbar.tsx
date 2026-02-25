@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { getUser, logout } from "@/lib/appState";
+import EYLogo from "@/components/atoms/EYLogo";
 
 interface NavbarProps {
     searchQuery: string;
@@ -34,22 +35,34 @@ export default function Navbar({ searchQuery, onSearch }: NavbarProps) {
 
     return (
         <header className="sticky top-0 z-30 bg-background/95 backdrop-blur border-b border-border">
-            <div className="max-w-screen-xl mx-auto px-6 h-14 flex items-center gap-4">
-                {/* Logo */}
+            <div className="max-w-screen-xl mx-auto px-6 h-14 flex items-center gap-5">
+                {/* Logos (EY | AI Pulse) */}
                 <button
-                    onClick={() => router.push("/feed")}
-                    className="flex items-center gap-2 shrink-0 mr-2"
+                    onClick={() => router.push("/")}
+                    className="flex items-center shrink-0 mr-2"
+                    aria-label="Go to feed"
                 >
-                    <Image
-                        src="/assets/ai-pulse-logo.png"
-                        alt="AI Pulse"
-                        width={28}
-                        height={28}
-                        className="object-contain"
-                    />
-                    <span className="font-display font-semibold text-base tracking-tight hidden sm:block">
-                        AI <span className="text-accent">Pulse</span>
-                    </span>
+                    {/* EY */}
+                    <div className="flex items-center leading-none">
+                        <EYLogo width={58} className="block h-7 w-auto" />
+                    </div>
+
+                    {/* Divider */}
+                    <div className="mx-4 h-8 w-px bg-[hsl(var(--foreground-subtle)/0.35)]" />
+
+                    {/* AI Pulse */}
+                    <div className="flex items-center gap-2 leading-none">
+                        <Image
+                            src="/assets/ai-pulse-logo.png"
+                            alt="AI Pulse"
+                            width={28}
+                            height={28}
+                            className="block object-contain"
+                        />
+                        <span className="font-display font-semibold text-base tracking-tight hidden sm:block leading-none">
+                            AI <span className="text-accent">Pulse</span>
+                        </span>
+                    </div>
                 </button>
 
                 {/* Search bar */}

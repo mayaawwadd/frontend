@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import FeatureCard from "@/components/molecules/FeatureCard";
 import LandingTemplate from "@/components/templates/LandingTemplate";
+import MarketingNavbar from "@/components/organisms/MarketingNavbar";
 
 const features = [
   {
@@ -98,30 +99,7 @@ export default function LandingPage() {
   return (
     <LandingTemplate>
       {/* ── NAV ── */}
-      <nav className="fixed top-0 left-0 right-0 z-40 border-b border-border/50 bg-background/80 backdrop-blur-md">
-        <div className="max-w-screen-xl mx-auto px-6 h-14 flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <Image src="/assets/ai-pulse-logo.png" alt="AI Pulse" width={28} height={28} className="object-contain" />
-            <span className="font-display font-semibold text-base tracking-tight">
-              AI <span className="text-accent">Pulse</span>
-            </span>
-          </div>
-          <div className="flex items-center gap-6">
-            <a href="#features" className="text-sm text-foreground-muted hover:text-foreground transition-colors hidden sm:block">
-              Features
-            </a>
-            <a href="#how-it-works" className="text-sm text-foreground-muted hover:text-foreground transition-colors hidden sm:block">
-              How it works
-            </a>
-            <button
-              onClick={() => router.push("/login")}
-              className="px-4 py-2 text-sm cursor-pointer font-semibold bg-accent text-accent-foreground rounded-lg hover:brightness-110 transition-all hover:shadow-accent-glow"
-            >
-              Sign in
-            </button>
-          </div>
-        </div>
-      </nav>
+      <MarketingNavbar />
 
       {/* ── HERO ── */}
       <section className="relative pt-14 min-h-screen flex items-center overflow-hidden">
