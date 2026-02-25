@@ -79,7 +79,7 @@ export default function Navbar({ searchQuery, onSearch }: NavbarProps) {
                 <div className="relative" ref={menuRef}>
                     <button
                         onClick={() => setMenuOpen((v) => !v)}
-                        className="w-9 h-9 rounded-full bg-accent text-accent-foreground font-semibold text-sm flex items-center justify-center hover:brightness-110 transition-all"
+                        className="w-9 h-9 rounded-full bg-accent text-accent-foreground cursor-pointer font-semibold text-sm flex items-center justify-center hover:brightness-110 transition-all"
                         aria-label="Profile menu"
                     >
                         {user?.avatar ?? "?"}
@@ -94,7 +94,7 @@ export default function Navbar({ searchQuery, onSearch }: NavbarProps) {
 
                             <button
                                 onClick={handleLogout}
-                                className="w-full px-4 py-2.5 text-left text-sm text-foreground-muted hover:text-foreground hover:bg-background-surface transition-colors"
+                                className="w-full px-4 py-2.5 text-left text-sm text-foreground-muted hover:text-foreground cursor-pointer hover:bg-background-surface transition-colors"
                             >
                                 → Sign out
                             </button>

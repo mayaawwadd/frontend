@@ -115,7 +115,7 @@ export default function LandingPage() {
             </a>
             <button
               onClick={() => router.push("/login")}
-              className="px-4 py-2 text-sm font-semibold bg-accent text-accent-foreground rounded-lg hover:brightness-110 transition-all hover:shadow-accent-glow"
+              className="px-4 py-2 text-sm cursor-pointer font-semibold bg-accent text-accent-foreground rounded-lg hover:brightness-110 transition-all hover:shadow-accent-glow"
             >
               Sign in
             </button>
@@ -162,7 +162,7 @@ export default function LandingPage() {
             <div className="flex items-center gap-4 animate-slide-up" style={{ animationDelay: "300ms" }}>
               <button
                 onClick={() => router.push("/login")}
-                className="px-7 py-3.5 bg-accent text-accent-foreground font-semibold rounded-lg hover:brightness-110 hover:shadow-accent-glow transition-all text-sm"
+                className="px-7 py-3.5 bg-accent cursor-pointer text-accent-foreground font-semibold rounded-lg hover:brightness-110 hover:shadow-accent-glow transition-all text-sm"
               >
                 Sign in with your EY account
               </button>
@@ -271,7 +271,7 @@ export default function LandingPage() {
             <div className="flex items-center justify-center gap-4 flex-wrap">
               <button
                 onClick={() => router.push("/login")}
-                className="px-8 py-3.5 bg-accent text-accent-foreground font-semibold rounded-lg hover:brightness-110 hover:shadow-accent-glow transition-all"
+                className="px-8 py-3.5 cursor-pointer bg-accent text-accent-foreground font-semibold rounded-lg hover:brightness-110 hover:shadow-accent-glow transition-all"
               >
                 Sign in with your EY account
               </button>

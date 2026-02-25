@@ -10,7 +10,7 @@ import { mockArticles, Article, TOPICS } from "@/data/mockArticles";
 import Navbar from "@/components/organisms/Navbar";
 import FilterSidebar from "@/components/organisms/FilterSidebar";
 import ArticleCard, { ArticleCardSkeleton } from "@/components/organisms/ArticleCard";
-import ArticleConfirmDialog from "@/components/organisms/ArticleConfirmDialog";
+import ArticlePreviewModal from "@/components/organisms/ArticlePreviewModal";
 import FeedEmptyState from "@/components/molecules/FeedEmptyState";
 import FeedTemplate from "@/components/templates/FeedTemplate";
 
@@ -112,7 +112,8 @@ export default function FeedPage() {
                                         {isLoading
                                             ? "Loading…"
                                             : `${filteredArticles.length} article${filteredArticles.length !== 1 ? "s" : ""}${activeFilterCount > 0
-                                                ? ` · ${activeFilterCount} filter${activeFilterCount > 1 ? "s" : ""} active`
+                                                ? ` · ${activeFilterCount} filter${activeFilterCount > 1 ? "s" : ""
+                                                } active`
                                                 : ""
                                             }`}
                                     </p>
@@ -127,7 +128,7 @@ export default function FeedPage() {
                                             setSidebarOpen((v) => !v);
                                         }
                                     }}
-                                    className="p-2 rounded-lg hover:bg-background-surface border border-border text-foreground-muted hover:text-foreground transition-colors relative"
+                                    className="p-2 rounded-lg hover:bg-background-surface border border-border text-foreground-muted hover:text-foreground transition-colors relative cursor-pointer"
                                     aria-label={sidebarOpen || mobileFiltersOpen ? "Close filters" : "Open filters"}
                                 >
                                     <SlidersHorizontal size={18} />
@@ -231,10 +232,10 @@ export default function FeedPage() {
                 </div>
 
                 {confirmArticle && (
-                    <ArticleConfirmDialog
+                    <ArticlePreviewModal
                         article={confirmArticle}
                         onClose={() => setConfirmArticle(null)}
-                        onOpen={() => {
+                        onViewSource={() => {
                             window.open(confirmArticle.articleUrl, "_blank", "noopener,noreferrer");
                             setConfirmArticle(null);
                         }}

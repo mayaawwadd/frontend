@@ -58,7 +58,7 @@ export default function LoginPage() {
                         <button
                             onClick={handleSSO}
                             disabled={loading}
-                            className="w-full h-12 bg-accent text-accent-foreground font-semibold rounded-lg flex items-center justify-center gap-3 transition-all duration-200 hover:brightness-110 hover:shadow-accent-glow disabled:opacity-70 disabled:cursor-not-allowed"
+                            className="w-full h-12 bg-accent cursor-pointer text-accent-foreground font-semibold rounded-lg flex items-center justify-center gap-3 transition-all duration-200 hover:brightness-110 hover:shadow-accent-glow disabled:opacity-70 disabled:cursor-not-allowed"
                         >
                             {loading ? (
                                 <span className="flex items-center gap-2">
