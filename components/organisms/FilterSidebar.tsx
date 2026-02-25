@@ -1,26 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import { TOPICS, SOURCES, REGIONS } from "@/data/mockArticles";
+import { TOPICS } from "@/data/mockArticles";
 
 interface FilterSidebarProps {
     selectedTopics: string[];
-    selectedSources: string[];
-    selectedRegions: string[];
     onTopicChange: (topics: string[]) => void;
-    onSourceChange: (sources: string[]) => void;
-    onRegionChange: (regions: string[]) => void;
     onReset: () => void;
     fullWidth?: boolean;
 }
 
 export default function FilterSidebar({
     selectedTopics,
-    selectedSources,
-    selectedRegions,
     onTopicChange,
-    onSourceChange,
-    onRegionChange,
     onReset,
     fullWidth = false,
 }: FilterSidebarProps) {
@@ -30,8 +22,7 @@ export default function FilterSidebar({
         setList(list.includes(item) ? list.filter((v) => v !== item) : [...list, item]);
     };
 
-    const hasFilters =
-        selectedTopics.length > 0 || selectedSources.length > 0 || selectedRegions.length > 0;
+    const hasFilters = selectedTopics.length > 0;
 
     return (
         <aside className={fullWidth ? "w-full" : "w-56 shrink-0"}>
@@ -71,20 +62,6 @@ export default function FilterSidebar({
                     items={TOPICS}
                     selected={selectedTopics}
                     onToggle={(item) => toggleItem(item, selectedTopics, onTopicChange)}
-                />
-
-                <FilterGroup
-                    title="Sources"
-                    items={SOURCES}
-                    selected={selectedSources}
-                    onToggle={(item) => toggleItem(item, selectedSources, onSourceChange)}
-                />
-
-                <FilterGroup
-                    title="Regions"
-                    items={REGIONS}
-                    selected={selectedRegions}
-                    onToggle={(item) => toggleItem(item, selectedRegions, onRegionChange)}
                 />
             </div>
         </aside>
