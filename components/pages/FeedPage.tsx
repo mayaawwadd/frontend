@@ -38,7 +38,7 @@ export default function FeedPage() {
     const [isLoading, setIsLoading] = useState(true);
     const [confirmArticle, setConfirmArticle] = useState<Article | null>(null);
 
-    const [sidebarOpen, setSidebarOpen] = useState(false);
+    const [sidebarOpen, setSidebarOpen] = useState(true);
     const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
     useEffect(() => {
@@ -74,8 +74,7 @@ export default function FeedPage() {
     };
 
     const trendingTopics = TOPICS.slice(0, 6);
-    const activeFilterCount =
-        selectedTopics.length + selectedSources.length + selectedRegions.length;
+    const activeFilterCount = selectedTopics.length + selectedSources.length + selectedRegions.length;
 
     if (!userReady) return null;
     if (!user) return null;
@@ -87,7 +86,7 @@ export default function FeedPage() {
 
                 <div className="max-w-screen-xl mx-auto px-6 py-8">
                     <div className="flex gap-8">
-                        {/* ✅ LEFT sidebar — Desktop filters */}
+                        {/* LEFT sidebar — Desktop filters */}
                         <div className="hidden lg:flex flex-col shrink-0">
                             {sidebarOpen && (
                                 <FilterSidebar
@@ -113,7 +112,8 @@ export default function FeedPage() {
                                         {isLoading
                                             ? "Loading…"
                                             : `${filteredArticles.length} article${filteredArticles.length !== 1 ? "s" : ""}${activeFilterCount > 0
-                                                ? ` · ${activeFilterCount} filter${activeFilterCount > 1 ? "s" : ""} active`
+                                                ? ` · ${activeFilterCount} filter${activeFilterCount > 1 ? "s" : ""
+                                                } active`
                                                 : ""
                                             }`}
                                     </p>
@@ -140,16 +140,18 @@ export default function FeedPage() {
                                 </button>
                             </div>
 
+                            {/* Mobile full-width filters drawer */}
                             {mobileFiltersOpen && (
                                 <div className="lg:hidden">
-                                    {/* overlay */}
                                     <div
                                         className="fixed inset-0 z-40"
-                                        style={{ background: "hsl(var(--background-overlay) / 0.6)", backdropFilter: "blur(4px)" }}
+                                        style={{
+                                            background: "hsl(var(--background-overlay) / 0.6)",
+                                            backdropFilter: "blur(4px)",
+                                        }}
                                         onClick={() => setMobileFiltersOpen(false)}
                                     />
 
-                                    {/* ✅ full-width drawer */}
                                     <div className="fixed top-0 left-0 right-0 bottom-0 z-50 bg-background-elevated border-r border-border shadow-toast animate-slide-up">
                                         <div className="p-4">
                                             <FilterSidebar
@@ -199,7 +201,7 @@ export default function FeedPage() {
                             )}
                         </main>
 
-                        {/* Trending sidebar */}
+                        {/* Trending */}
                         <aside className="hidden xl:block w-52 shrink-0">
                             <div>
                                 <div className="flex items-center gap-2 mb-4">
@@ -213,7 +215,7 @@ export default function FeedPage() {
                                         <button
                                             key={topic}
                                             onClick={() => setSelectedTopics([topic])}
-                                            className="flex items-center gap-3 w-full text-left px-3 py-2.5 rounded-lg bg-background-elevated hover:bg-background-surface border [border-color:hsl(var(--border))] transition-colors group hover-border-accent"
+                                            className="flex items-center gap-3 w-full text-left px-3 py-2.5 rounded-lg bg-background-elevated hover:bg-background-surface border border-border transition-all group hover-border-accent"
                                         >
                                             <span className="text-xs text-foreground-subtle w-4 shrink-0">
                                                 {String(i + 1).padStart(2, "0")}

@@ -37,8 +37,8 @@ export default function Navbar({ searchQuery, onSearch }: NavbarProps) {
             <div className="max-w-screen-xl mx-auto px-6 h-14 flex items-center gap-4">
                 {/* Logo */}
                 <button
-                    onClick={() => router.push("/")}
-                    className="flex items-center gap-2 shrink-0 mr-2 hover:opacity-80 transition-opacity"
+                    onClick={() => router.push("/feed")}
+                    className="flex items-center gap-2 shrink-0 mr-2"
                 >
                     <Image
                         src="/assets/ai-pulse-logo.png"
@@ -91,16 +91,6 @@ export default function Navbar({ searchQuery, onSearch }: NavbarProps) {
                                 <p className="text-sm font-medium text-foreground truncate">{user?.name}</p>
                                 <p className="text-xs text-foreground-subtle truncate">{user?.email}</p>
                             </div>
-
-                            <button
-                                onClick={() => {
-                                    setMenuOpen(false);
-                                    router.push("/preferences");
-                                }}
-                                className="w-full px-4 py-2.5 text-left text-sm text-foreground-muted hover:text-foreground hover:bg-background-surface transition-colors"
-                            >
-                                ⚙ Preferences
-                            </button>
 
                             <button
                                 onClick={handleLogout}

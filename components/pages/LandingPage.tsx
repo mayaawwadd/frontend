@@ -9,86 +9,60 @@ const features = [
   {
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-        />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 11c0 3.314-2.686 6-6 6a6 6 0 116-6z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-4.35-4.35" />
       </svg>
     ),
-    title: "Curated Intelligence",
-    desc: "Expert-vetted AI insights filtered from thousands of sources — regulatory updates, research papers, and tech press, distilled for professional services.",
+    title: "Fast Search",
+    desc: "Search across titles, summaries, sources, and topics to find the AI updates you need in seconds.",
   },
   {
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
-        />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 4h18M6 8h12M9 12h6M6 16h12M3 20h18" />
       </svg>
     ),
-    title: "Personalised Feed",
-    desc: "Tell us your practice area, region, and focus — AI Pulse surfaces only what's relevant to you, from AI Governance to MLOps to Regulatory Compliance.",
+    title: "Practical Filters",
+    desc: "Filter by topic, source, and region—so your feed stays focused and relevant to your work.",
   },
   {
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-        />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14 3h7v7m0-7L10 14" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4" />
       </svg>
     ),
-    title: "Enterprise-grade Security",
-    desc: "SSO-authenticated, data stays within your firm's environment. No third-party tracking. Built to meet the security standards of a Big Four organisation.",
+    title: "Open Source Links Safely",
+    desc: "Preview the source URL on hover, confirm before opening, then jump to the original article to read more.",
   },
   {
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M13 10V3L4 14h7v7l9-11h-7z"
-        />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
       </svg>
     ),
-    title: "Real-time Coverage",
-    desc: "From EU AI Act enforcement to emerging LLM vulnerabilities — stay ahead of developments the moment they matter to your practice and your clients.",
+    title: "Clean, Minimal UI",
+    desc: "A calm, distraction-free layout designed for professional services teams—no clutter, no noise.",
   },
   {
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-        />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 11V7m0 4l3 3" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     ),
-    title: "Global & Regional Lens",
-    desc: "Coverage spanning MENA, Europe, and the US. Filter by geography to focus on the regulatory and market dynamics that shape your engagements.",
+    title: "Always Up-To-Date Feed",
+    desc: "A single place to check the latest AI intelligence—quick to scan, easy to follow, and ready for daily use.",
   },
   {
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-        />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 11V7a4 4 0 118 0v4" />
       </svg>
     ),
-    title: "Digest Mode",
-    desc: "Prefer a weekly round-up over a daily feed? Choose your cadence and receive a structured digest of the week's most impactful AI developments.",
+    title: "Company SSO Login",
+    desc: "Sign in securely using your firm credentials — no separate accounts, passwords, or onboarding required.",
   },
 ];
 
@@ -106,7 +80,7 @@ const topics = [
 ];
 
 const steps = [
-  { num: "01", title: "Sign in with your EY account", desc: "Authenticate with EY's credentials — no new account required." },
+  { num: "01", title: "Sign in with SSO", desc: "Authenticate with your firm credentials — no new account required." },
   { num: "02", title: "Set your preferences", desc: "Pick your topics, sources, and regions. Takes under 60 seconds." },
   { num: "03", title: "Read what matters", desc: "A personalised AI intelligence feed, updated daily." },
 ];
@@ -170,7 +144,7 @@ export default function LandingPage() {
 
             {/* Headline */}
             <h1
-              className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight mb-7 animate-slide-up"
+              className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight mb-6 animate-slide-up"
               style={{ animationDelay: "100ms" }}
             >
               The AI signal,
@@ -179,22 +153,20 @@ export default function LandingPage() {
             </h1>
 
             {/* Sub */}
-            <p className="text-lg sm:text-xl text-foreground-muted leading-relaxed max-w-2xl mb-12 animate-slide-up" style={{ animationDelay: "200ms" }}>
+            <p className="text-lg text-foreground-muted leading-relaxed max-w-xl mb-10 animate-slide-up" style={{ animationDelay: "200ms" }}>
               AI Pulse delivers curated, expert-vetted AI intelligence to professional services teams — personalised by topic, region, and role. Stay
               informed, stay ahead.
             </p>
 
-            {/* CTA */}
-            <div className="animate-slide-up" style={{ animationDelay: "300ms" }}>
+            {/* CTAs */}
+            <div className="flex items-center gap-4 animate-slide-up" style={{ animationDelay: "300ms" }}>
               <button
                 onClick={() => router.push("/login")}
-                className="px-8 py-4 bg-accent text-accent-foreground font-semibold rounded-lg hover:brightness-110 hover:shadow-accent-glow transition-all text-base"
+                className="px-7 py-3.5 bg-accent text-accent-foreground font-semibold rounded-lg hover:brightness-110 hover:shadow-accent-glow transition-all text-sm"
               >
-                Sign in with your EY Account
+                Sign in with your EY account
               </button>
             </div>
-
-
           </div>
         </div>
 
@@ -207,12 +179,12 @@ export default function LandingPage() {
 
       {/* ── STATS STRIP ── */}
       <section className="border-y border-border bg-background-elevated">
-        <div className="max-w-screen-xl mx-auto px-6 py-16">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 sm:gap-12">
+        <div className="max-w-screen-xl mx-auto px-6 py-10">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
             {stats.map((s) => (
               <div key={s.label} className="text-center">
-                <div className="font-display text-4xl font-bold text-accent mb-2">{s.value}</div>
-                <div className="text-xs text-foreground-subtle uppercase tracking-widest font-medium">{s.label}</div>
+                <div className="font-display text-3xl font-bold text-accent mb-1">{s.value}</div>
+                <div className="text-xs text-foreground-subtle uppercase tracking-widest">{s.label}</div>
               </div>
             ))}
           </div>
@@ -220,12 +192,12 @@ export default function LandingPage() {
       </section>
 
       {/* ── TOPICS MARQUEE ── */}
-      <section className="py-16 overflow-hidden border-b border-border/50">
+      <section className="py-12 overflow-hidden border-b border-border/40">
         <div className="flex items-center gap-3 marquee-track" style={{ width: "max-content" }}>
           {[...topics, ...topics, ...topics].map((t, i) => (
             <span
               key={i}
-              className="shrink-0 px-4 py-2 rounded-full border border-border text-xs text-foreground-muted bg-background-surface hover:bg-background-elevated transition-colors"
+              className="shrink-0 px-4 py-2 rounded-full border border-border text-xs text-foreground-muted bg-background-elevated"
             >
               {t}
             </span>
@@ -235,16 +207,17 @@ export default function LandingPage() {
 
 
       {/* ── FEATURES ── */}
-      <section id="features" className="py-20 max-w-screen-xl mx-auto px-6">
-        <div className="mb-16 max-w-2xl">
-          <h2 className="font-display text-4xl sm:text-5xl font-bold mb-6 leading-tight">Built for professional services</h2>
-          <p className="text-foreground-muted text-lg leading-relaxed">
+      <section id="features" className="py-28 max-w-screen-xl mx-auto px-6">
+        <div className="mb-16 max-w-xl">
+          <div className="w-8 h-0.5 bg-accent rounded-full mb-5" />
+          <h2 className="font-display text-3xl sm:text-4xl font-bold mb-4 leading-tight">Built for the pace of professional services</h2>
+          <p className="text-foreground-muted text-base leading-relaxed">
             No generic news aggregator. AI Pulse is designed for the information velocity, compliance sensitivity, and strategic focus of Big Four
             environments.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {features.map((f, i) => (
             <FeatureCard key={f.title} {...f} index={i} />
           ))}
@@ -252,54 +225,83 @@ export default function LandingPage() {
       </section>
 
       {/* ── HOW IT WORKS ── */}
-      <section id="how-it-works" className="py-20 bg-background-elevated border-y border-border">
+      <section id="how-it-works" className="py-28 bg-background-elevated border-y border-border">
         <div className="max-w-screen-xl mx-auto px-6">
-          <div className="mb-16 text-center max-w-2xl mx-auto">
-            <h2 className="font-display text-4xl sm:text-5xl font-bold mb-4">Get started in minutes</h2>
-            <p className="text-foreground-muted text-lg">
-              No onboarding calls, no IT tickets. Sign in, filter your interests, start reading.
+          <div className="mb-16 text-center">
+            <div className="w-8 h-0.5 bg-accent rounded-full mx-auto mb-5" />
+            <h2 className="font-display text-3xl sm:text-4xl font-bold mb-3">Up and running in 60 seconds</h2>
+            <p className="text-foreground-muted max-w-md mx-auto text-sm leading-relaxed">
+              No onboarding calls, no IT tickets. Sign in, set your preferences, start reading.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {steps.map((step, i) => (
               <div key={step.num} className="relative flex flex-col items-center text-center md:items-start md:text-left">
                 {i < steps.length - 1 && (
-                  <div className="hidden md:block absolute top-5 left-[calc(50%+1.5rem)] w-full h-px border-t border-dashed border-border/50 z-0" />
+                  <div className="hidden md:block absolute top-5 left-[calc(50%+1.5rem)] w-full h-px border-t border-dashed border-border z-0" />
                 )}
-                <div className="relative z-10 w-12 h-12 rounded-full border-2 border-accent bg-accent/10 flex items-center justify-center mb-5">
-                  <span className="font-display text-sm font-bold text-accent">{step.num}</span>
+                <div className="relative z-10 w-10 h-10 rounded-full border border-accent/40 bg-accent/5 flex items-center justify-center mb-4">
+                  <span className="font-display text-xs font-bold text-accent">{step.num}</span>
                 </div>
-                <h3 className="font-semibold text-foreground mb-2 text-base">{step.title}</h3>
-                <p className="text-sm text-foreground-muted leading-relaxed">{step.desc}</p>
+                <h3 className="font-semibold text-foreground mb-2 text-sm">{step.title}</h3>
+                <p className="text-xs text-foreground-muted leading-relaxed">{step.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* ── CTA BANNER ── */}
+      <section className="py-32 max-w-screen-xl mx-auto px-6">
+        <div className="relative rounded-2xl overflow-hidden border border-accent/20 bg-background-elevated text-center px-8 py-20">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-1 bg-accent rounded-b-full opacity-60 blur-sm" />
+          <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-64 h-64 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="relative z-10">
+            <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-5">Ready to start?</p>
+            <h2 className="font-display text-3xl sm:text-5xl font-bold mb-5 leading-tight">
+              Your AI intelligence feed
+              <br />
+              <span className="text-accent">awaits.</span>
+            </h2>
+            <p className="text-foreground-muted text-base mb-10 max-w-md mx-auto leading-relaxed">
+              Join your colleagues on AI Pulse and stop missing the developments that matter to your practice.
+            </p>
+            <div className="flex items-center justify-center gap-4 flex-wrap">
+              <button
+                onClick={() => router.push("/login")}
+                className="px-8 py-3.5 bg-accent text-accent-foreground font-semibold rounded-lg hover:brightness-110 hover:shadow-accent-glow transition-all"
+              >
+                Sign in with your EY account
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── FOOTER ── */}
-      <footer className="border-t border-border py-12">
-        <div className="max-w-screen-xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <footer className="border-t border-border py-10">
+        <div className="max-w-screen-xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2.5">
             <Image
               src="/assets/ai-pulse-logo.png"
               alt="AI Pulse"
               width={20}
               height={20}
-              className="object-contain opacity-70"
+              className="object-contain opacity-60"
             />
-            <span className="text-sm font-medium text-foreground-subtle">AI Pulse</span>
+            <span className="text-sm text-foreground-subtle font-medium">AI Pulse</span>
           </div>
-          <p className="text-xs text-foreground-subtle text-center">© 2026 AI Pulse — Internal Use Only · Confidential</p>
-          <div className="flex items-center gap-6">
-            <a href="#features" className="text-xs font-medium text-foreground-subtle hover:text-foreground transition-colors">
+          <p className="text-xs text-foreground-subtle">© 2026 AI Pulse — Internal Use Only · Confidential</p>
+          <div className="flex items-center gap-5">
+            <a href="#features" className="text-xs text-foreground-subtle hover:text-foreground-muted transition-colors">
               Features
             </a>
-            <a href="#how-it-works" className="text-xs font-medium text-foreground-subtle hover:text-foreground transition-colors">
+            <a href="#how-it-works" className="text-xs text-foreground-subtle hover:text-foreground-muted transition-colors">
               How it works
             </a>
-            <button onClick={() => router.push("/login")} className="text-xs font-medium text-accent hover:text-accent/80 transition-colors">
+            <button onClick={() => router.push("/login")} className="text-xs text-accent hover:underline">
               Sign in
             </button>
           </div>

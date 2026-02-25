@@ -42,7 +42,12 @@ export default function FilterSidebar({
                     className="lg:hidden mb-3 flex items-center gap-2 text-sm text-foreground-muted hover:text-foreground transition-colors"
                 >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4h18M6 8h12M9 12h6M12 16h0" />
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M3 4h18M6 8h12M9 12h6M12 16h0"
+                        />
                     </svg>
                     {mobileOpen ? "Hide Filters" : "Show Filters"}
                 </button>
@@ -51,7 +56,9 @@ export default function FilterSidebar({
             <div className={`${fullWidth ? "block" : mobileOpen ? "block" : "hidden"} lg:block space-y-6`}>
                 {/* Header */}
                 <div className="flex items-center justify-between">
-                    <span className="text-xs font-semibold uppercase tracking-widest text-foreground-subtle">Filters</span>
+                    <span className="text-xs font-semibold uppercase tracking-widest text-foreground-subtle">
+                        Filters
+                    </span>
                     {hasFilters && (
                         <button onClick={onReset} className="text-xs text-accent hover:underline">
                             Reset all
@@ -116,8 +123,8 @@ function FilterGroup({
                                 key={item}
                                 onClick={() => onToggle(item)}
                                 className={`flex items-center gap-2.5 w-full text-left px-2 py-1.5 rounded-md text-sm transition-colors ${isSelected
-                                        ? "text-accent bg-accent/10"
-                                        : "text-foreground-muted hover:text-foreground hover:bg-background-surface"
+                                    ? "text-accent bg-accent/10"
+                                    : "text-foreground-muted hover:text-foreground hover:bg-background-surface"
                                     }`}
                             >
                                 <span
@@ -126,7 +133,12 @@ function FilterGroup({
                                 >
                                     {isSelected && (
                                         <svg viewBox="0 0 10 8" fill="none" className="w-2 h-2">
-                                            <path d="M1 4l2.5 2.5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                                            <path
+                                                d="M1 4l2.5 2.5L9 1"
+                                                stroke="currentColor"
+                                                strokeWidth="1.5"
+                                                strokeLinecap="round"
+                                            />
                                         </svg>
                                     )}
                                 </span>

@@ -3,10 +3,9 @@
 import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { loginAsGuest, loginAsSSO } from "@/lib/appState";
+import { loginAsSSO } from "@/lib/appState";
 import SSOIcon from "@/components/atoms/SSOIcon";
 import LoginTemplate from "@/components/templates/LoginTemplate";
-
 
 export default function LoginPage() {
     const router = useRouter();
@@ -19,11 +18,6 @@ export default function LoginPage() {
             setLoading(false);
             router.push("/feed");
         }, 1200);
-    };
-
-    const handleGuest = () => {
-        loginAsGuest();
-        router.push("/feed");
     };
 
     return (
@@ -64,7 +58,7 @@ export default function LoginPage() {
                         <button
                             onClick={handleSSO}
                             disabled={loading}
-                            className="w-full h-12 bg-accent text-accent-foreground font-semibold rounded-lg flex items-center justify-center gap-3 transition-all duration-200 hover:brightness-110 hover:shadow-accent-glow disabled:opacity-70 disabled:cursor-not-allowed mb-4"
+                            className="w-full h-12 bg-accent text-accent-foreground font-semibold rounded-lg flex items-center justify-center gap-3 transition-all duration-200 hover:brightness-110 hover:shadow-accent-glow disabled:opacity-70 disabled:cursor-not-allowed"
                         >
                             {loading ? (
                                 <span className="flex items-center gap-2">
@@ -88,22 +82,9 @@ export default function LoginPage() {
                             ) : (
                                 <>
                                     <SSOIcon />
-                                    Sign in with your EY Account
+                                    Sign in with your EY account
                                 </>
                             )}
-                        </button>
-
-                        <div className="flex items-center gap-3 my-5">
-                            <div className="flex-1 h-px bg-border" />
-                            <span className="text-xs text-foreground-subtle">or</span>
-                            <div className="flex-1 h-px bg-border" />
-                        </div>
-
-                        <button
-                            onClick={handleGuest}
-                            className="w-full h-11 bg-transparent border border-border text-foreground-muted hover:border-accent/50 hover:text-foreground rounded-lg font-medium text-sm transition-all duration-200"
-                        >
-                            Continue as Guest (Preview)
                         </button>
                     </div>
 
@@ -116,7 +97,9 @@ export default function LoginPage() {
             </main>
 
             <div className="pb-8 text-center">
-                <p className="text-xs text-foreground-subtle">© 2026 AI Pulse — Internal Use Only</p>
+                <p className="text-xs text-foreground-subtle">
+                    © 2026 AI Pulse — Internal Use Only
+                </p>
             </div>
         </LoginTemplate>
     );
