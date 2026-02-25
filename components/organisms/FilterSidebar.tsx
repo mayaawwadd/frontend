@@ -108,7 +108,7 @@ function FilterGroup({
         <div>
             <button
                 onClick={() => setCollapsed((v) => !v)}
-                className="flex items-center justify-between w-full text-xs font-semibold uppercase tracking-widest text-foreground-subtle mb-2 hover:text-foreground-muted transition-colors"
+                className="flex items-center justify-between w-full cursor-pointer text-xs font-semibold uppercase tracking-widest text-foreground-subtle mb-2 hover:text-foreground-muted transition-colors"
             >
                 <span>{title}</span>
                 <span>{collapsed ? "+" : "−"}</span>
@@ -122,7 +122,7 @@ function FilterGroup({
                             <button
                                 key={item}
                                 onClick={() => onToggle(item)}
-                                className={`flex items-center gap-2.5 w-full text-left px-2 py-1.5 rounded-md text-sm transition-colors ${isSelected
+                                className={`flex items-center cursor-pointer gap-2.5 w-full text-left px-2 py-1.5 rounded-md text-sm transition-colors ${isSelected
                                     ? "text-accent bg-accent/10"
                                     : "text-foreground-muted hover:text-foreground hover:bg-background-surface"
                                     }`}

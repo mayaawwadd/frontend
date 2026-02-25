@@ -128,7 +128,7 @@ export default function FeedPage() {
                                             setSidebarOpen((v) => !v);
                                         }
                                     }}
-                                    className="p-2 rounded-lg hover:bg-background-surface border border-border text-foreground-muted hover:text-foreground transition-colors relative"
+                                    className="p-2 rounded-lg hover:bg-background-surface border border-border text-foreground-muted hover:text-foreground transition-colors relative cursor-pointer"
                                     aria-label={sidebarOpen || mobileFiltersOpen ? "Close filters" : "Open filters"}
                                 >
                                     <SlidersHorizontal size={18} />
